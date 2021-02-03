@@ -5,6 +5,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import Menu from "./components/MenuComponent";
 import Routing from "./components/RoutingComponent";
+import MainContext from "context";
 
 const theme = createMuiTheme({
   palette: {
@@ -25,12 +26,14 @@ const StyledWrapper = styled.div`
 export default() => {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Menu title="FoodPickr" />
-        <StyledWrapper>
-          <Routing />
-        </StyledWrapper>
-      </BrowserRouter>
+      <MainContext.Provider value={[]}>
+        <BrowserRouter>
+          <Menu title="FoodPickr" />
+          <StyledWrapper>
+            <Routing />
+          </StyledWrapper>
+        </BrowserRouter>
+      </MainContext.Provider>
     </ThemeProvider>
   );
 }
