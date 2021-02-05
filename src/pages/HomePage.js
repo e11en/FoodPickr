@@ -11,8 +11,8 @@ const StyledWrapper = styled.div`
 `;
 
 export default ({updateContext}) => {
-  //const [weekRecipes, setWeekRecipes] = useState([]);
-  const context = useContext(MainContext);
+  const [weekRecipes, setWeekRecipes] = useState([]);
+  //const context = useContext(MainContext);
 
   const getRandomRecipe = () => {
     return recipes[Math.floor((Math.random() * recipes.length))];
@@ -22,7 +22,12 @@ export default ({updateContext}) => {
     const newWeek = [];
 
     days.forEach(day => {
-      const randomRecipe = getRandomRecipe();
+      let randomRecipe = getRandomRecipe();
+      while(newWeek.filter(n => n.name === randomRecipe.name).length > 0)
+      {
+        randomRecipe = getRandomRecipe();
+      }
+
       newWeek.push(
         {
           day: day,
@@ -32,30 +37,30 @@ export default ({updateContext}) => {
       );
     });
 
-    //setWeekRecipes(newWeek);
-    updateContext(newWeek);
+    setWeekRecipes(newWeek);
+    //updateContext(newWeek);
   }, []);
 
   const switchRecipe = (day) => {
-    var arr = context;
+    var arr = weekRecipes;
     var recipeToSwitch = arr.filter(recipe => recipe.day === day)[0];
     const randomRecipe = getRandomRecipe();
     recipeToSwitch.imageSrc = randomRecipe.imageSrc;
     recipeToSwitch.name = randomRecipe.name;
     arr[arr.indexOf(recipeToSwitch)] = recipeToSwitch;
     
-    updateContext([...arr]);
-    //setWeekRecipes([...arr]);
+    //updateContext([...arr]);
+    setWeekRecipes([...arr]);
   };
 
   return (
     <StyledWrapper>
       {
-        context.map(r => 
+        weekRecipes.map(r => 
           <RecipeCard key={r.day + "-" + r.name} onSwitch={() => switchRecipe(r.day)} imageSrc={r.imageSrc} day={r.day} name={r.name}/>
         )
       }
-      <p>{context}</p>
+      {/* <p>{context}</p> */}
     </StyledWrapper>
   );
 }

@@ -34,7 +34,10 @@ export default ({onSwitch, imageSrc, day, name}) => {
         title={name}
       />
       <StyledCardActions>
-        <Button variant="contained" color="primary" onClick={onSwitch}><ShuffleIcon/> Swich</Button>
+      {
+        onSwitch &&
+          <Button variant="contained" color="primary" onClick={onSwitch}><ShuffleIcon/> Swich</Button>
+      }
       </StyledCardActions>
     </StyledCard>
   );

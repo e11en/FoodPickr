@@ -9,6 +9,10 @@ import styled from "styled-components";
 
 const StyledAppBar = styled(AppBar)`
   flex-grow: 1;
+
+  & button {
+    margin: 0.5em;
+  }
 `;
 
 const StyledTitle = styled(Typography)`
@@ -25,6 +29,7 @@ export default (props) => {
       <Toolbar>
         <StyledTitle variant="h6">{props.title}</StyledTitle>
         <Button variant="contained" color="secondary" onClick={toShoppingList}>To shopping list</Button>
+        <Button href="/all" variant="contained" color="secondary">All recipes</Button>
       </Toolbar>
     </StyledAppBar>
   );
