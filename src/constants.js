@@ -290,6 +290,32 @@ export const recipes = [
         ]
     },
     {
+        name: "Zalm met spinazie en rijst",
+        imageSrc: "images/recipes/zalm-spinazie-rijst.png",
+        items: [
+            {
+                name: "zalm filet",
+                amount: 2,
+                measurement: "stuks"
+            },
+            {
+                name: "verse spinazie",
+                amount: 1,
+                measurement: "pak"
+            },
+            {
+                name: "rijst",
+                amount: 200,
+                measurement: "g"
+            },
+            {
+                name: "witte wijn saus",
+                amount: 1,
+                measurement: "pak"
+            }
+        ]
+    },
+    {
         name: "Andijvie stampot",
         imageSrc: "images/recipes/andijvie-schnitzel.png",
         items: [
